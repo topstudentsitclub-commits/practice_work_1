@@ -4,3 +4,56 @@
     font-size: 2.1rem;
     padding: 0;
 }
+
+.header-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    gap: 2%;
+
+
+}
+
+.header-main {
+
+    .row, p {
+        margin: 0;
+    }
+}
+
+.header-profile__avatar {
+    width: 40px;
+    aspect-ratio: 1;
+}
+
+aside {
+    width: 15%;
+}
+
+aside nav {
+    background: inherit;
+    height: auto;
+    box-shadow: none;
+    padding-left: 20%;
+}
+
+aside ul.nav-list {
+
+    display: flex;
+    flex-direction: column;
+
+    li a {
+        display: flex;
+        align-items: center;
+        gap: 2%;
+        padding: 0;
+        background-color: #fff;
+        color: rgb(39, 158, 255);
+    }
+
+    .title {
+        white-space: nowrap;
+    }
+
+}
