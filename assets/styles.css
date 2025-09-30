@@ -48,6 +48,12 @@
       justify-content: center;
       font-weight: bold;
       color: #6200ee;
+      overflow: hidden;
+    }
+    
+    .user-info__avatar img {
+        object-fit: cover;
+        width: 100%;
     }
 
     .user-info__name {
