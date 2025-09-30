@@ -1,84 +1,75 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/header.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>whoThere — Личный кабинет</title>
+<link rel="stylesheet" href="assets/styles.css">
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
-
 <body>
-    <header>
+  <header class="header">
+    <a href="/" class="header__logo" aria-label="На главную">whoThere</a>
+    <div class="user-info" aria-label="Информация о пользователе">
+      <div class="user-info__avatar" aria-hidden="true">А</div>
+      <span class="user-info__name">Студент</span>
+    </div>
+  </header>
 
-        <div class="header-main card-panel teal lighten-2">
-            <div class="my-container">
-                <div class="row">
-                    <div class="col s3">
-                        <a href="/" class="brand-logo">whoThere</a>
-                    </div>
-                    <div class="col s6 offset-s3">
-                        <div class="header-profile">
-                            <img src="assets/img/profile.jpg" alt="" class="header-profile__avatar circle">
-                            <p class="header-profile__name flow-text white-text">Топ Ученик</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню">☰</button>
 
-    </header>
-
-    <aside>
-        <nav>
-            <ul class="nav-list">
-                <li class="">
-                    <a class="nav-link" href="profile.html">
-                        <i class="material-icons">account_box</i>
-                        <span class="title">Мой профиль</span>
-                    </a>
-                </li>
-                                <li class="">
-                    <a class="nav-link" href="news.html">
-                        <i class="material-icons">event_note</i>
-                        <span class="title">Новости</span>
-                    </a>
-                </li>
-                                <li class="">
-                    <a class="nav-link" href="messages.html">
-                        <i class="material-icons">email</i>
-                        <span class="title">Сообщения</span>
-                    </a>
-                </li>
-                                <li class="">
-                    <a class="nav-link" href="friends.html">
-                        <i class="material-icons">people</i>
-                        <span class="title">Друзья</span>
-                    </a>
-                </li>
-                                <li class="">
-                    <a class="nav-link" href="photos.html">
-                        <i class="material-icons">photo</i>
-                        <span class="title">Фотографии</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+<div class="layout">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Основное меню">
+      <nav class="sidebar__nav">
+        <a href="/profile" class="sidebar__link sidebar__link--active">
+          <span class="sidebar__icon" aria-hidden="true">👤</span>
+          <span class="sidebar__text">Профиль</span>
+        </a>
+        <a href="/friends" class="sidebar__link">
+          <span class="sidebar__icon" aria-hidden="true">👥</span>
+          <span class="sidebar__text">Друзья</span>
+        </a>
+        <a href="/messages" class="sidebar__link">
+          <span class="sidebar__icon" aria-hidden="true">💬</span>
+          <span class="sidebar__text">Сообщения</span>
+        </a>
+        <a href="/news" class="sidebar__link">
+          <span class="sidebar__icon" aria-hidden="true">📰</span>
+          <span class="sidebar__text">Новости</span>
+        </a>
+        <a href="/photos" class="sidebar__link">
+          <span class="sidebar__icon" aria-hidden="true">🖼</span>
+          <span class="sidebar__text">Фотографии</span>
+        </a>
+      </nav>
     </aside>
 
     <main>
-
+      <div class="page-content">
+        <!-- Сюда студенты вставляют контент текущей страницы -->
+        <!-- Например: <section><h1>Мой профиль</h1><p>...</p></section> -->
+      </div>
     </main>
+  </div>
 
-    <script src="assets/scripts.js" async defer></script>
+  <script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = sidebar.classList.toggle('sidebar--open');
+      overlay.classList.toggle('overlay--active', isOpen);
+      burgerBtn.setAttribute('aria-expanded', isOpen);
+    });
+
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('sidebar--open');
+      overlay.classList.remove('overlay--active');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  </script>
 </body>
-
 </html>
