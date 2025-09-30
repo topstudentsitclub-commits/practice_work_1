@@ -1,31 +1,75 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ru">
 <head>
-
-
-
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>whoThere — Личный кабинет</title>
+<link rel="stylesheet" href="assets/styles.css">
 
 </head>
 <body>
+  <header class="header">
+    <a href="/" class="header__logo" aria-label="На главную">whoThere</a>
+    <div class="user-info" aria-label="Информация о пользователе">
+      <div class="user-info__avatar" aria-hidden="true">А</div>
+      <span class="user-info__name">Студент</span>
+    </div>
+  </header>
 
-<aside>
-<nav>
-<div class="row">
-      <div class="col s6"><span class="flow-text">who There</span></div>
-<img class="responsive-img" src="cool_pic.jpg">
+  <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню">☰</button>
+
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+<div class="layout">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Основное меню">
+      <nav class="sidebar__nav">
+        <a href="/profile" class="sidebar__link sidebar__link--active">
+          <span class="sidebar__icon" aria-hidden="true">👤</span>
+          <span class="sidebar__text">Профиль</span>
+        </a>
+        <a href="/friends" class="sidebar__link">
+          <span class="sidebar__icon" aria-hidden="true">👥</span>
+          <span class="sidebar__text">Друзья</span>
+        </a>
+        <a href="/messages" class="sidebar__link">
+          <span class="sidebar__icon" aria-hidden="true">💬</span>
+          <span class="sidebar__text">Сообщения</span>
+        </a>
+        <a href="/news" class="sidebar__link">
+          <span class="sidebar__icon" aria-hidden="true">📰</span>
+          <span class="sidebar__text">Новости</span>
+        </a>
+        <a href="/photos" class="sidebar__link">
+          <span class="sidebar__icon" aria-hidden="true">🖼</span>
+          <span class="sidebar__text">Фотографии</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main>
+      <div class="page-content">
+        <!-- Сюда студенты вставляют контент текущей страницы -->
+        <!-- Например: <section><h1>Мой профиль</h1><p>...</p></section> -->
       </div>
+    </main>
+  </div>
 
+  <script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
 
-</nav>
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = sidebar.classList.toggle('sidebar--open');
+      overlay.classList.toggle('overlay--active', isOpen);
+      burgerBtn.setAttribute('aria-expanded', isOpen);
+    });
 
-
-
-</aside>
-
-
-
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('sidebar--open');
+      overlay.classList.remove('overlay--active');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  </script>
 </body>
-
 </html>
