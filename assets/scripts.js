@@ -1,16 +1,15 @@
+    const burgerBtn = document.getElementById('burgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
 
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = sidebar.classList.toggle('sidebar--open');
+      overlay.classList.toggle('overlay--active', isOpen);
+      burgerBtn.setAttribute('aria-expanded', isOpen);
+    });
 
-    // var elems = document.querySelectorAll('.sidenav');
-    // var instances = M.Sidenav.init(elems, {});
-
-
-  // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
-  // var collapsibleElem = document.querySelector('.collapsible');
-  // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
-
-  // Or with jQuery
-// $ = jQuery;
-//   $(document).ready(function(){
-//     $('.sidenav').sidenav();
-//   });
-        
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('sidebar--open');
+      overlay.classList.remove('overlay--active');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+    });
